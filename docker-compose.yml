@@ -1,0 +1,35 @@
+services:
+  thyroid_cancer_db:
+    image: postgres:14
+    container_name: thyroid_cancer_db
+    environment:
+      POSTGRES_DB: ThyroidCancerRisk
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  thyroid_cancer_backend:
+    build: ./backend
+    image: thyroid_cancer_backend
+    ports:
+      - "9999:9999"
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@thyroid_cancer_db:5432/ThyroidCancerRisk
+    depends_on:
+      - thyroid_cancer_db
+
+  thyroid_cancer_frontend:
+    build: ./frontend
+    image: thyroid_cancer_frontend
+    ports:
+      - "8501:8501"
+    environment:
+      - API_URL=http://thyroid_cancer_backend:9999
+    depends_on:
+      - thyroid_cancer_backend
+
+volumes:
+  pgdata:

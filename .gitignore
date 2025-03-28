@@ -1,0 +1,16 @@
+# Python-related files
+__pycache__/
+
+# Environment variables
+.env
+
+# Model and encoder files
+saved_models/
+
+# Virtual environment
+venv/
+env/
+
+# IDE/editor specific files (e.g., VSCode, PyCharm)
+.vscode/
+.idea/
