@@ -55,23 +55,35 @@ To run this project locally, follow these steps:
 **1. Set up PostgreSQL Database**
 - Create a PostgreSQL database named `ThyroidCancerRisk`.
 
-**2. Install dependencies**
+**2. Set up the .env file**
+
+Before running the application, create a .env file in the root directory of the project and define the following environment variables:
+```
+DATABASE_URL=postgresql://postgres:your_password_here@localhost:5432/ThyroidCancerRisk
+API_URL=http://localhost:9999
+```
+- **DATABASE_URL:** The connection string to your PostgreSQL database, including the username (postgres),
+password (your_password_here), and database name (ThyroidCancerRisk).
+
+- **API_URL:** The URL where the FastAPI backend will be running.
+
+**3. Install dependencies**
 ```
 pip install -r requirements.txt
 ```
 
-**3. Apply Database Migrations**
+**4. Apply Database Migrations**
 ```
 alembic upgrade head
 ```
 
-**4. Start the Backend**
+**5. Start the Backend**
 ```
 cd backend
 uvicorn app:app --reload --port 9999
 ```
 
-**5. Start the Frontend**
+**6. Start the Frontend**
 ```
 cd frontend
 streamlit run frontend.py
@@ -98,13 +110,13 @@ Below are some examples of predictions made by the application:
 
 **🩺 Benign Case**
 
-<img src="images/test_benign.png" alt="Benign Prediction" width="500"/>
+<img src="images/test_benign.png" alt="Benign Prediction" width="700"/>
 
 </br>
 
 **⚠️ Malignant Case**
 
-<img src="images/test_malignant.png" alt="Malignant Prediction" width="500"/>
+<img src="images/test_malignant.png" alt="Malignant Prediction" width="700"/>
 
 ### 🛠️ Technologies Used
 
