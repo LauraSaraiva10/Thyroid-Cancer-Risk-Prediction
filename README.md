@@ -22,9 +22,10 @@ thyroid-cancer-risk-prediction/
 │   │   └── thyroid_cancer_data.py  # Defines data model
 │   ├── routers/
 │   │   └── prediction.py  # Handles prediction requests
-│   ├── saved_models/  # Stores trained models and encoders
+│   ├── saved_models/  # Stores trained models, encoders and scalers
 │   │   ├── encoder.pkl
-│   │   └── model.pkl
+│   │   ├── model.pkl
+│   │   └── scaler.pkl
 │   ├── schemas/
 │   │   └── prediction.py  # Defines input/output schemas
 │   ├── services/
@@ -99,7 +100,7 @@ This will start both the backend API service and the frontend user interface in 
 
 ### 🎯 How It Works
 
-On the first execution, the application will train a new model and save the necessary files (model.pkl and encoder.pkl) in the saved_models directory. This process may take some time.
+On the first execution, the application will train a new model and save the necessary files (model.pkl, encoder.pkl and scaler.pkl) in the saved_models directory. This process may take some time.
 
 On subsequent runs, the application will load the saved model for faster predictions.
 
